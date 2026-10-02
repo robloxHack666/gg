@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achat de Komore Argent</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        /* Bandeau d'avertissement en haut */
+        .warning-banner {
+            background-color: #e74c3c;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 1.1em;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #34495e;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #bdc3c7;
+            border-radius: 6px;
+            font-size: 1em;
+            background-color: #fff;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        select:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        .payment-methods {
+            margin-top: 25px;
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .btn-pay {
+            padding: 15px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.1s, opacity 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-pay:active {
+            transform: scale(0.98);
+        }
+
+        .btn-paypal {
+            background-color: #ffc439;
+            color: #003087;
+        }
+
+        .btn-other {
+            background-color: #34495e;
+            color: white;
+        }
+
+        /* Message d'erreur dynamique */
+        .error-message {
+            display: none;
+            background-color: #fadbd8;
+            color: #c0392b;
+            border: 1px solid #f5b7b1;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bandeau supérieur -->
+    <div class="warning-banner">
+        ⚠️ Paiement pas encore disponible
+    </div>
+
+    <div class="container">
+        <h1>Boutique Komore Argent</h1>
+        
+        <!-- Sélection du montant -->
+        <div class="form-group">
+            <label for="amount">Choisissez le montant de Komore Argent :</label>
+            <select id="amount">
+                <option value="100">100 Komore Argent (1,99 €)</option>
+                <option value="500">500 Komore Argent (4,99 €)</option>
+                <option value="1000">1 000 Komore Argent (8,99 €)</option>
+                <option value="5000">5 000 Komore Argent (39,99 €)</option>
+            </select>
+        </div>
+
+        <!-- Système de paiement -->
+        <div class="payment-methods">
+            <label>Sélectionnez un moyen de paiement pour acheter :</label>
+            <div class="payment-options">
+                <button class="btn-pay btn-paypal" onclick="showError()">Acheter avec PayPal</button>
+                <button class="btn-pay btn-other" onclick="showError()">Autre moyen de paiement</button>
+            </div>
+        </div>
+
+        <!-- Zone d'affichage de l'erreur -->
+        <div id="errorMessage" class="error-message">
+            Paiement pas encore disponible
+        </div>
+    </div>
+
+    <script>
+        function showError() {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.style.display = 'block';
+            
+            // Fait clignoter légèrement le message si on reclique dessus
+            errorDiv.style.animation = 'none';
+            errorDiv.offsetHeight; /* déclenche un reflow */
+            errorDiv.style.animation = null; 
+        }
+    </script>
+
+</body>
+</html>
